@@ -1,0 +1,31 @@
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon ./app_koa",
+    "start": "node ./app",
+    "build-2": "babel app -w -d dist",
+    "build": "babel app_koa.js -w -o app.js"
+  },
+  "dependencies": {
+    "debug": "~2.6.0",
+    "dotenv": "^4.0.0",
+    "jsonwebtoken": "^7.3.0",
+    "keygrip": "^1.0.1",
+    "koa": "^2.0.1",
+    "koa-bodyparser": "^4.1.0",
+    "koa-router": "^7.0.1",
+    "morgan": "~1.7.0",
+    "mysql": "^2.13.0",
+    "sequelize": "^3.30.2"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.5",
+    "@types/sequelize": "^4.0.41",
+    "babel-cli": "^6.23.0",
+    "babel-plugin-transform-async-to-generator": "^6.22.0",
+    "babel-register": "^6.23.0",
+    "nodemon": "^1.11.0"
+  }
+}
