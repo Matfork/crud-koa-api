@@ -9,7 +9,7 @@ var authM = class AuthMiddlware extends BaseMiddleware{
    }
 
    //Add your middlewares logic here
-    __verifyToken(ctx, next) {
+    async __verifyToken(ctx, next) {
         let token = ctx.request.body  && ctx.request.body.token  ? ctx.request.body.token  : undefined ||
                     ctx.request.query && ctx.request.query.token ? ctx.request.query.token : undefined ||
                     (ctx.request.headers['authorization'] ? ctx.request.headers['authorization'].split(' ')[1] : '');
@@ -24,7 +24,7 @@ var authM = class AuthMiddlware extends BaseMiddleware{
             ctx.status = result.code;
             ctx.body = {code: 200, data: result.data};
           }else{
-            next();
+            await next();
           }
         }else{
             ctx.status = 500;
@@ -32,9 +32,9 @@ var authM = class AuthMiddlware extends BaseMiddleware{
         }
     }
 
-    __generateToken (req , res, next) {
+    async __generateToken (ctx, next) {
         console.log('Everything looks good');
-        next();
+        await next();
     }
 
   //End of your middlewares logic

@@ -23,7 +23,7 @@ var userController = class {
    static async show(ctx, next) {
      try{
          let user = await
-           User.findById(ctx.request.params.id, {
+           User.findById(ctx.params.id, {
             include: Group
           });
 
@@ -54,7 +54,7 @@ var userController = class {
           let updatedRecords = await
           User.update(ctx.request.body, {
             where: {
-              id: ctx.request.params.id
+              id: ctx.params.id
             }
           });
 
@@ -72,7 +72,7 @@ var userController = class {
           let deletedRecords = await
           User.destroy({
              where: {
-               id: ctx.request.params.id
+               id: ctx.params.id
              }
            });
 

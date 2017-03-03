@@ -12,8 +12,6 @@ var authorController = class {
             include: Book
           });
 
-          console.log(authors);
-
         ctx.status = 200;
         ctx.body = {code: 200,data: authors};
     }catch(error){
@@ -24,9 +22,10 @@ var authorController = class {
 
   //Get an author by the unique ID using model.findById()
   static async show(ctx, next) {
+
     try{
         let author = await
-          Author.findById(ctx.request.params.id,
+          Author.findById(ctx.params.id,
           {
             include: Book
           });
@@ -59,7 +58,7 @@ var authorController = class {
         let updatedRecords = await
           Author.update(ctx.request.body, {
             where: {
-              id: ctx.request.params.id
+              id: ctx.params.id
             }
           });
 
@@ -77,7 +76,7 @@ var authorController = class {
         let deletedRecords = await
           Author.destroy({
             where: {
-              id: ctx.request.params.id
+              id: ctx.params.id
             }
           });
 

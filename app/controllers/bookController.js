@@ -37,7 +37,7 @@ var bookController =  class {
    static async show(ctx, next) {
      try{
          let book = await
-           Book.findById(ctx.request.params.id, {
+           Book.findById(ctx.params.id, {
              include: Author
            });
 
@@ -69,7 +69,7 @@ var bookController =  class {
          let updatedRecords = await
            Book.update(ctx.request.body, {
             where: {
-              id: ctx.request.params.id
+              id: ctx.params.id
             }
           });
 
@@ -88,7 +88,7 @@ var bookController =  class {
         let deletedRecords = await
           Book.destroy({
             where: {
-              id: ctx.request.params.id
+              id: ctx.params.id
             }
           });
 
